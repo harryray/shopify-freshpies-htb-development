@@ -1,0 +1,40 @@
+{{ 'logo-slider.css' | asset_url | stylesheet_tag }}
+
+<div class="logo-slider">
+  {% for block in section.blocks %}
+    <div class="logo-slider__item">
+      <img src="{{ block.settings.url }}" alt="{{ block.settings.alt }}"  />
+    </div>
+  {% endfor %}
+</div>
+
+{% schema %}
+{
+  "name": "Logo Slider",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "logo_slider_logo",
+      "name": "Logo",
+      "settings": [
+        {
+          "type": "text",
+          "id": "alt",
+          "label": "Alt Tag",
+          "default": "Default Alt Tag"
+        },
+        {
+          "type": "image_picker",
+          "id": "logo",
+          "label": "Logo",
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Default Logo Slider"
+    }
+  ]
+}
+{% endschema %}
